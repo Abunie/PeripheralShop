@@ -1,6 +1,6 @@
 # PeripheralShop
 A online shopping application build with ASP.NET and Azure.
-* **Please Note:** To run this app you would need to set up a database on azure on your local computer. I did not push the password for my database to github for security reasons so you would have to create yours.*
+***Please Note:** To run this app you would need to set up a database on azure on your local computer. I did not push the password for my database to github for security reasons so you would have to create yours*
 
 ## Main Page
 ![image](https://user-images.githubusercontent.com/32043872/118083534-56e38500-b37c-11eb-9459-e62f458a1f40.png)
