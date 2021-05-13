@@ -1,0 +1,157 @@
+﻿@model PeripheralShop.Models.Configurator
+@{
+    ViewData["Title"] = "Peripheral Shop Configurator";
+}
+@section Scripts
+{
+    <script src="@Url.Content("~/js/pcconfig.js")"></script>
+}
+
+
+<div class="card">
+    <div class="row">
+        <h4 class="col-9">PC Configurator: </h4>
+        <button class="btn btn-danger col-2"
+                onclick="location.href='@Url.Action("ClearSelection", "Configurator")'">
+            Clear
+        </button>
+    </div>
+    <form>
+        <div class="card">
+            <div class="row ">
+                <div class="col s2">
+                    <img id="ram_image" class="configimg" src="~/sliderimages/ram.png">
+                </div>
+                <div class="col-6" style="margin:20px;">
+                    <select class="custom-select" id="ram">
+                        <option selected>Choose a RAM</option>
+                        <option value="-1">None</option>
+                        @foreach (var item in Model.getRAMs())
+                        {
+                            <option value="@item.getItemId()">@item.getName()</option>
+                        
+                        }
+                    </select>
+                </div>
+                <div class="col s2">
+                    <h5 id="ramprice" class="right teal-text">$0.00</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="row ">
+                <div class="col s2">
+                    <img id="cpu_image" class="configimg" src="~/sliderimages/cpu.png">
+                </div>
+                <div class="col-6" style="margin:20px;">
+                    <select class="custom-select" id="cpu">
+                        <option selected>Choose a CPU</option>
+                        <option value="-1">None</option>
+                        @foreach (var item in Model.getCPUs())
+                        {
+                            <option value="@item.getItemId()">@item.getName()</option>
+                        
+                        }
+                    </select>
+                </div>
+                <div class="col s2">
+                    <h5 id="cpuprice" class="right teal-text">$0.00</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="row ">
+                <div class="col s2">
+                    <img id="display_image" class="configimg" src="~/sliderimages/display.png">
+                </div>
+                <div class="col-6" style="margin:20px;">
+                    <select class="custom-select" id="display">
+                        <option selected>Choose a Display</option>
+                        <option value="-1">None</option>
+                        @foreach (var item in Model.getDisplays())
+                        {
+                            <option value="@item.getItemId()">@item.getName()</option>
+                           
+                        }
+                    </select>
+                </div>
+                <div class="col s2">
+                    <h5 id="displayprice" class="right teal-text">$0.00</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="row ">
+                <div class="col s2">
+                    <img id="harddrive_image" class="configimg" src="~/sliderimages/harddrive.png">
+                </div>
+                <div class="col-6" style="margin:20px;">
+                    <select class="custom-select" id="harddrive">
+                        <option selected>Choose a Harddrive</option>
+                        <option value="-1">None</option>
+                        @foreach (var item in Model.getHarddrives())
+                        {
+                            <option value="@item.getItemId()">@item.getName()</option>
+                           
+                        }
+                    </select>
+                </div>
+                <div class="col s2">
+                    <h5 id="harddriveprice">$0.00</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="row ">
+                <div class="col s2">
+                    <img id="soundcard_image" class="configimg" src="~/sliderimages/soundcard.png">
+                </div>
+                <div class="col-6" style="margin:20px;">
+                    <select class="custom-select" id="soundcard">
+                        <option selected>Choose a Soundcard</option>
+                        <option value="-1">None</option>
+                        @foreach (var item in Model.getSoundcards())
+                        {
+                            <option value="@item.getItemId()">@item.getName()</option>
+                      
+                        }
+                    </select>
+                </div>
+                <div class="col s2">
+                    <h5 id="soundcardprice" class="right teal-text">$0.00</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="row ">
+                <div class="col s2">
+                    <img id="os_image" class="configimg" src="~/sliderimages/os.png">
+                </div>
+                <div class="col-6" style="margin:20px;">
+                    <select class="custom-select" id="os">
+                        <option selected>Choose an OS</option>
+                        <option value="-1">None</option>
+                        @foreach (var item in Model.getOS())
+                        {
+                            <option value="@item.getItemId()">@item.getName()</option>
+                        }
+                    </select>
+                </div>
+                <div class="col s2">
+                    <h5 id="osprice" class="right teal-text">$0.00</h5>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <h5>Your total:</h5>
+    <h4 id="totalprice">$0.00</h4>
+    <form asp-controller="Home" asp-action="Cart" method="post" onsubmit="buynow()">
+        <input type="hidden" name="cart" id="cartinput">
+        <button class="btn btn-outline-primary" type="submit" name="action" id="buybtn">
+            Add to Cart    
+        </button>
+    </form>
+</div>
+

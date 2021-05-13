@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+<h2>Leave some feedback or contact us for help</h2>
+
+<div class="card" style="margin:20px; padding:20px">
+    <form>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="First name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Last name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div>
+            <label for="customRange2">How much did you enjoy our services today ?</label>
+            <input type="range" class="custom-range" min="0" max="5" id="customRange2">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Please leave some more feedback</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Subcribe to our Mailing List</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+

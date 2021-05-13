@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    
+*@
+@model PeripheralShop.Models.Checkout
+@{
+    ViewData["Title"] = "Cart";
+}
+<div class="card-panel">
+    <div class="row valign-wrapper">
+        <h4 class="teal-text col s9">Checkout: </h4>
+        <button class="btn btn-outline-danger"
+                onclick="location.href='@Url.Action("ClearCart", "Home")'">
+            Clear Cart
+        </button>
+    </div>
+    @if (Model.getCart().Count == 0)
+    {
+        <p>Your cart is empty</p>
+    }
+    @{
+        double price = 0;
+    }
+    <div id="cartdetails">
+        @foreach (var item in Model.getCart())
+        {
+            <div class="card mb-3" style="max-width: 1000px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="@Url.Content(item.getImage())" width="200px" height="200px">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.getName()</h5>
+                            <p class="card-text">@item.getDescription()</p>
+                            <p class="card-text"><small class="text-muted">$@item.getPrice().ToString("F")</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <br />
+            </div>
+
+            price += item.getPrice();
+
+
+        }
+    </div>
+    <h4> Total: $@Math.Round(price, 2)</h4>
+    <div class="row valign-wrapper">
+        <div class="col s9">
+
+            <button class="btn btn-outline-success"
+                    onclick="location.href='@Url.Action("Purchase", "Home")'">
+                Place Order
+            </button>
+        </div>
+        <div>
+            <button class="btn btn-outline-dark"
+                    onclick="location.href='@Url.Action("Index", "Home")'">
+                Continue Shopping
+            </button>
+        </div>
+    </div>
+
+
+
+</div>
